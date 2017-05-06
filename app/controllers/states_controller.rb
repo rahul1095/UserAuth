@@ -23,6 +23,10 @@ class StatesController < ApplicationController
 
   # POST /states
   # POST /states.json
+  def get_states
+    @states= State.where(:country_id=>params[:country])
+  end
+
   def create
     @state = State.new(state_params)
 
@@ -69,6 +73,6 @@ class StatesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def state_params
-      params.require(:state).permit(:state_name)
+      params.require(:state).permit(:state_name,:country_id)
     end
 end
