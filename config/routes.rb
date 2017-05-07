@@ -12,6 +12,6 @@ Rails.application.routes.draw do
   devise_for :users
   root 'companies#index'
   get 'get_states' => "states#get_states"
-  # get 'get_cities' => "cities#get_cities"
+   get 'get_cities' => "cities#get_cities"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

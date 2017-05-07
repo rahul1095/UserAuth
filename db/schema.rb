@@ -89,7 +89,6 @@ ActiveRecord::Schema.define(version: 20170506102653) do
     t.string   "state_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer  "country"
     t.integer  "country_id"
   end
 
