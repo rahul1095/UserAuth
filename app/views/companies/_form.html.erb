@@ -71,10 +71,12 @@ $('#company_country_id').change(function(){
 });
 </script>
 
+
+
 <script>
 $(document).ready(function() {
 $('#company_state_id').change(function(){
-  var state =  $('#company_city_id').val()
+  var state =  $('#company_state_id').val()
   $.ajax({
     url: "/get_cities",
     type: "GET",
