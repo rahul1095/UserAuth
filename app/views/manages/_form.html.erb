@@ -13,11 +13,10 @@
   <% end %>
 
 
-<div class="form-group">
+        <div class="form-group">
         <label class="col-sm-2 control-label">First name</label>
         <div class="col-sm-2  inputGroupContainer">
           <%= f.text_field :first_name,:class=>"form-control" %>
-        
           </div>
         </div>
 
@@ -41,7 +40,7 @@
  <div class="form-group">
         <label class="col-sm-2 control-label">company</label>
         <div class="col-sm-7  inputGroupContainer">
-         <%= f.select(:company_id, Company.all.collect {|u| [u.name, u.id]},{},:prompt => 'Select Category',:class=>"form-control") %>
+         <%= f.select(:company_id, Company.all.collect {|u| [u.name, u.id]},{},:prompt => 'Select Company',:class=>"form-control") %>
         
           </div>
         </div>
@@ -49,7 +48,7 @@
             <div class="form-group">
         <label class="col-sm-1 control-label">monthly</label>
         <div class="col-sm-2  inputGroupContainer">
-          <%= f.email_field :monthly_charge,:class=>"form-control" %>
+          <%= f.text_field :monthly_charge,:class=>"form-control" %>
         
           </div>
         </div></br></br>
@@ -58,19 +57,59 @@
         <div class="form-group">
         <label class="col-sm-2 control-label">Role</label>
         <div class="col-sm-7  inputGroupContainer">
-         <%= f.select(:role_id, UserRole.all.collect {|u| [u.role_name, u.id]},{},:prompt => 'Select Category',:class=>"form-control") %>
-        
-          </div>
-        </div></br></br>
+         <%= f.select(:role_id, UserRole.all.collect {|u| [u.role_name, u.id]},{},:prompt => 'Select userRole',:class=>"form-control") %>
+         </div>
+          
+           </div></br></br>
+
+                <table border="0" cellpadding="0" cellspacing="0">
+                <tr>
+                  <td>
+                From:
+                </td>
+                 <td>
+                <input type="text" id="txtFrom" />
+              </td>
+              <td>
+                &nbsp;
+            </td>
+            <td>
+                To:
+            </td>
+            <td>
+                <input type="text" id="txtTo" />
+            </td>
+            </tr>
+          </table>
 
     
-
-        <div class="field">
-          <%= f.label :image_id %>
+       <div class="form-group">
+        <label class="col-sm-5 control-label">image</label>
+        <div class="col-sm-7  inputGroupContainer">
           <%= f.file_field :image_id,:onchange => "showimagepreview(this)",:class=>"img_file"  %>
               <img id="imgprvw" style="width: 167px; height: 94px; margin-top: 8px;" />
             <%#= f.select(:image_id, Image.all.collect {|u| [u. real_name, u.id]},:prompt => 'Select Category',:class=>"form-control") %> 
           </div>
+          </div></br></br>
+          
+
+
+           <div class="form-group">
+        <label class="col-sm-2 control-label">Notes</label>
+        <div class="col-sm-10  inputGroupContainer">
+          <%= f.cktext_area :notes,:class=>"form-control" %>
+         </div>
+        </div></br></br></br>
+        <div class="field">
+    <%= f.label :active %>
+    <%= f.check_box :active %>
+  </div>
+
+        <div class="actions">
+    <%= f.submit %>
+  </div>
+
+        
 
   <% end %>
 
@@ -86,4 +125,44 @@
     }
     $('.image_upload').submit();
   }
+</script>
+
+<script type="text/javascript">
+$(function () {
+    $("#txtFrom").datepicker({
+        numberOfMonths: 2,
+        onSelect: function (selected) {
+            var dt = new Date(selected);
+            dt.setDate(dt.getDate() + 1);
+            $("#txtTo").datepicker("option", "minDate", dt);
+        }
+    });
+    $("#txtTo").datepicker({
+        numberOfMonths: 2,
+        onSelect: function (selected) {
+            var dt = new Date(selected);
+            dt.setDate(dt.getDate() - 1);
+            $("#txtFrom").datepicker("option", "maxDate", dt);
+        }
+    });
+});
+</script><script type="text/javascript">
+$(function () {
+    $("#txtFrom").datepicker({
+        numberOfMonths: 2,
+        onSelect: function (selected) {
+            var dt = new Date(selected);
+            dt.setDate(dt.getDate() + 1);
+            $("#txtTo").datepicker("option", "minDate", dt);
+        }
+    });
+    $("#txtTo").datepicker({
+        numberOfMonths: 2,
+        onSelect: function (selected) {
+            var dt = new Date(selected);
+            dt.setDate(dt.getDate() - 1);
+            $("#txtFrom").datepicker("option", "maxDate", dt);
+        }
+    });
+});
 </script>

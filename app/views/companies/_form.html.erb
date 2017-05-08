@@ -11,32 +11,40 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :name %>
-    <%= f.text_field :name %>
-  </div></br>
+  
+  
+<div class="form-group">
+        <label class="col-sm-1 control-label">name</label>
+        <div class="col-sm-8  inputGroupContainer">
+        <%= f.text_field :name,:class=>"form-control" %>
+          </div>
+          </div></br></br>
+   
+<div class="form-group">
+        <label class="col-sm-1 control-label">country</label>
+        <div class="col-sm-3  inputGroupContainer">
+       <%= f.select(:country_id, Country.all.collect {|u| [u.country_name, u.id]},{},:prompt => 'Select Category',:class=>"form-control") %>
+          </div>
+        </div>
+        
+  <div class="form-group">
+        <label class="col-sm-1 control-label">state</label>
+        <div class="col-sm-3  inputGroupContainer">
+          <div class="statecontainer">
+        <%= f.select(:state_id, State.all.collect {|u| [u.state_name, u.id]},{},:prompt => 'Select Category',:class=>"form-control") %>
+          </div>
+        </div>
+        </div>
 
-  <div class="field">
-  <%= f.label :country_name %>
-   <%= f.select(:country_id, Country.all.collect {|u| [u.country_name, u.id]},:prompt => 'Select Category',:class=>"form-control") %>
-  </div>
+  <div class="form-group">
+        <label class="col-sm-1 control-label">city</label>
+        <div class="col-sm-3  inputGroupContainer">
+          <div class="citycontainer">
+         <%= f.select(:city_id, City.all.collect {|u| [u.city_name, u.id]},{},:prompt => 'Select Category',:class=>"form-control") %>
+          </div>
+        </div>
+        </div></br></br>
 
-  <div class="field">
-    <%= f.label :state_name %>
-
-    <div class="statecontainer">
-  <%= f.select(:state_id, State.all.collect {|u| [u.state_name, u.id]},:prompt => 'Select Category',:class=>"form-control") %>
-  </div>
-
-  </div></br>
-
- <div class="field">
-    <%= f.label :city_name %>
-    <div class="citycontainer">
-  <%= f.select(:city_id, City.all.collect {|u| [u.city_name, u.id]},:prompt => 'Select Category',:class=>"form-control") %>
-  </div>
-
-  </div></br>
 
   <div class="field">
     <%= f.label :postcode %>

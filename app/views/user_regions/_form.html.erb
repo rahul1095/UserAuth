@@ -1,3 +1,4 @@
+<div class="containner">
 <%= form_for(user_region) do |f| %>
   <% if user_region.errors.any? %>
     <div id="error_explanation">
@@ -12,11 +13,18 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :region_name %>
-    <%= f.text_field :region_name %>
-  </div>
+     <%= f.label :user %>
+    <%= f.select(:user_id, User.all.collect {|u| [u.first_name, u.id]},:prompt => 'Select Category',:class=>"form-control") %>   
+</div></br></br>
+
+<div class="field">
+     <%= f.label :country %>
+    <%= f.select(:region_id, Region.all.collect {|u| [u.region_name, u.id]},:prompt => 'Select Region',:class=>"form-control") %>
+    
+</div>
 
   <div class="actions">
     <%= f.submit %>
   </div>
 <% end %>
+</div>
