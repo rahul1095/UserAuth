@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170506102653) do
+ActiveRecord::Schema.define(version: 20170508113934) do
 
   create_table "active_admin_comments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "namespace"
@@ -78,6 +78,13 @@ ActiveRecord::Schema.define(version: 20170506102653) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "nodes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "node_name"
+    t.integer  "place_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "places", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "place_name"
     t.integer  "company_id"
@@ -127,6 +134,7 @@ ActiveRecord::Schema.define(version: 20170506102653) do
     t.decimal  "monthly_charge",                       precision: 10
     t.binary   "notes",                  limit: 65535
     t.boolean  "active"
+    t.integer  "image_id"
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end

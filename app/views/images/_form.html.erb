@@ -13,7 +13,7 @@
 
   <div class="field">
     <%= f.label :user_id %>
-    <%= f.number_field :user_id %>
+     <%= f.select(:user_id, User.all.collect {|u| [u.email, u.id]},:prompt => 'select user email',:class=>"form-control") %>
   </div>
 
   <div class="field">

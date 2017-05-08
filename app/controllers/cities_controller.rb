@@ -22,8 +22,10 @@ class CitiesController < ApplicationController
   end
 
   def get_cities
+
     
- @cities =City.where(:city_id=>params[:country])
+ @cities =City.where(:state_id =>params[:state])
+
     end
   # POST /cities
   # POST /cities.json

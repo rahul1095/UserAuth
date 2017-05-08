@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :nodes
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   resources :places
@@ -9,6 +10,7 @@ Rails.application.routes.draw do
   resources :user_regions
   resources :user_roles
   resources :companies
+  resources :manages
   devise_for :users
   root 'companies#index'
   get 'get_states' => "states#get_states"

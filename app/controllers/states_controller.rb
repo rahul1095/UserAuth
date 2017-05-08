@@ -24,6 +24,7 @@ class StatesController < ApplicationController
   # POST /states
   # POST /states.json
   def get_states
+    
     @states= State.where(:country_id=>params[:country])
   end
 
