@@ -72,12 +72,12 @@ $('#company_country_id').change(function(){
   var country =  $('#company_country_id').val()
   alert(country)
   $.ajax({
-    url: "/get_states",
+    url: "/states/get_states",
     type: "GET",
     data: {country: country},
   });
 });
 });
 </script>
-<script>
+
 

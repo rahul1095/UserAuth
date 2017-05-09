@@ -5,8 +5,16 @@ Rails.application.routes.draw do
   ActiveAdmin.routes(self)
   resources :places
   resources :images
-  resources :cities
-  resources :states
+  resources :cities do
+    collection do
+      get :get_cities
+    end
+   end 
+  resources :states do
+    collection do
+      get :get_states
+    end
+   end 
   resources :countries
   resources :user_regions
   resources :user_roles
@@ -14,7 +22,7 @@ Rails.application.routes.draw do
   resources :manages
   devise_for :users
   root 'companies#index'
-  get 'get_states' => "states#get_states"
-   get 'get_cities' => "cities#get_cities"
+  # get 'get_states' => "states#get_states"
+  #  get 'get_cities' => "cities#get_cities"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

@@ -16,3 +16,5 @@
 //= require ckeditor/init
 
 //= require_tree .
+//= require moment
+//= require bootstrap-datetimepicker

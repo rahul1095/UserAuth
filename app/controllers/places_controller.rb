@@ -24,10 +24,13 @@ class PlacesController < ApplicationController
   # POST /places
   # POST /places.json
   def create
+      byebug
     @place = Place.new(place_params)
 
     respond_to do |format|
       if @place.save
+         Node.create(:node_name=>params[:place][:nodename],:place_id=>@place.id)
+
         format.html { redirect_to @place, notice: 'Place was successfully created.' }
         format.json { render :show, status: :created, location: @place }
       else

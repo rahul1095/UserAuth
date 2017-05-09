@@ -1,1 +1,47 @@
-hnkjlkrhjtl
+<p id="notice"><%= notice %></p>
+
+<h1>User Details</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>FirstName</th>
+       <th>Lastname</th>
+      <th>Email</th>
+      <th>Company</th>
+      <th>Role</th>
+      <th>Startdate</th>
+      <th>Enddate</th>
+      <th>MonthlyCharge</th>
+      <th>Notes</th>
+      <th>Active</th>
+      <th colspan="12"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @manages.each do |user| %>
+      <tr>
+        <td><%= user.first_name %></td>
+        <td><%= user.last_name %></td>
+        <td><%= user.email %></td>
+      
+        <td><%= user.start_date %></td>
+        <td><%= user.end_date %></td>
+        <td><%= user.monthly_charge %></td>
+        <td><%= user.notes%></td>
+        <td><%= user.active %></td>
+        <td><%= link_to 'Show', manage_path(user), :class=>"btn btn-info" %></td>
+        <td><%= link_to 'Edit', edit_manage_path(user), :class=>"btn btn-warning"%></td>
+        <td><%= link_to 'Destroy', manage_path(user),
+              method: :delete,
+              data: { confirm: 'Are you sure?' }, :class=>"btn btn-danger" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New User', new_manage_path, :class=>"btn btn-default"%>
+

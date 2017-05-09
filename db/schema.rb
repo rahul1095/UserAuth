@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170508204100) do
+ActiveRecord::Schema.define(version: 20170509080947) do
 
   create_table "active_admin_comments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "namespace"
@@ -74,8 +74,11 @@ ActiveRecord::Schema.define(version: 20170508204100) do
     t.integer  "user_id"
     t.string   "real_name"
     t.string   "image_name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.string   "imageable"
+    t.integer  "imageable_id"
+    t.string   "imageable_type"
   end
 
   create_table "nodes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -102,6 +105,7 @@ ActiveRecord::Schema.define(version: 20170508204100) do
     t.string   "state_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "country"
     t.integer  "country_id"
   end
 
