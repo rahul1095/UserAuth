@@ -59,21 +59,23 @@
     <%= f.submit "save", :class=>"btn btn-success"%>
   </div>
   </div>
+  <%= button_tag "Reset", type: :reset %>
+
 <% end %>
 </div>
 
-<!-- <script>
-$(function () {
-    $('#xyz').on('click', function () {
-        var Status = $(this).val();
-        $.ajax({
-            url: 'Ajax/StatusUpdate.php',
-            data: {
-                text: $("textarea[name=Status]").val(),
-                Status: Status
-            },
-            dataType : 'json'
-        });
-    });
+<script>
+$(document).ready(function() {
+$('#user_region_region_id').change(function(){
+  var country =  $('#user_region_region_id').val()
+  alert(1)
+  $.ajax({
+    url: "/states/get_states",
+    type: "GET",
+    // data: {country: country},
+  });
 });
-</script> -->
+});
+
+
+</script>
