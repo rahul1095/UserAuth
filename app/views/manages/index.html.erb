@@ -1,3 +1,4 @@
+<div class="container">
 <p id="notice"><%= notice %></p>
 
 <h1>User Details</h1>
@@ -24,13 +25,24 @@
       <tr>
         <td><%= user.first_name %></td>
         <td><%= user.last_name %></td>
-        <td><%= user.email %></td>
-      
+        <td><%= user.email%></td>
+        <td><%if user.company_id.present?%>
+        <%= Company.find(user.company_id).name %>
+          <%end%>
+        </td>
+
+        <td><%if user.role_id.present?%>
+        <%= UserRole.find(user.role_id).role_name %>
+          <%end%>
+        </td>
+        
+        
         <td><%= user.start_date %></td>
         <td><%= user.end_date %></td>
         <td><%= user.monthly_charge %></td>
         <td><%= user.notes%></td>
         <td><%= user.active %></td>
+
         <td><%= link_to 'Show', manage_path(user), :class=>"btn btn-info" %></td>
         <td><%= link_to 'Edit', edit_manage_path(user), :class=>"btn btn-warning"%></td>
         <td><%= link_to 'Destroy', manage_path(user),
@@ -43,5 +55,5 @@
 
 <br>
 
-<%= link_to 'New User', new_manage_path, :class=>"btn btn-default"%>
-
+<%= link_to 'New User', new_manage_path, :class=>"btn btn-success"%>
+</div>

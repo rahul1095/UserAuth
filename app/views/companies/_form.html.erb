@@ -38,7 +38,7 @@
 
   <div class="form-group">
         <label class="col-sm-1 control-label">city</label>
-        <div class="col-sm-3  inputGroupContainer">
+        <div class="col-sm-1  inputGroupContainer">
           <div class="citycontainer">
          <%= f.select(:city_id, City.all.collect {|u| [u.city_name, u.id]},{},:prompt => 'Select Category',:class=>"form-control") %>
           </div>
@@ -46,20 +46,28 @@
         </div></br></br>
 
 
-  <div class="field">
-    <%= f.label :postcode %>
-    <%= f.text_field :postcode %>
-  </div></br>
 
-  <div class="field">
-    <%= f.label :start_date %>
-    <%= f.datetime_select :start_date %>
-  </div></br>
-
-  <div class="field">
-    <%= f.label :active %>
-    <%= f.check_box :active %>
+<div class="form-group">
+    <label class="col-sm-1 control-label">postcode</label>
+    <div class="col-sm-2  inputGroupContainer">
+      <%= f.text_field :postcode,:class=>"form-control" %>
+    </div>
   </div>
+
+  
+   <div class="form-group">
+    <label class="col-sm-1 control-label">Start_date</label>
+    <div class="col-sm-2  inputGroupContainer">
+     <%= f.text_field :start_date, :id => 'datetimepicker1' %>
+    </div>
+  </div>
+
+   <div class="form-group">
+        <label class="col-sm-1 control-label">Active</label>
+      <div class="col-sm-1  inputGroupContainer">
+        <%= f.check_box :active %>
+        </div>
+    </div></br></br>
 
   <div class="actions">
     <%= f.submit %>
@@ -79,5 +87,14 @@ $('#company_country_id').change(function(){
 });
 });
 </script>
+
+<script type="text/javascript">
+
+            $(function () {
+                $('#datetimepicker1').datetimepicker();
+                $('#datetimepicker2').datetimepicker();
+            });
+        </script>
+
 
 

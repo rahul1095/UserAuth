@@ -24,7 +24,7 @@ class PlacesController < ApplicationController
   # POST /places
   # POST /places.json
   def create
-      byebug
+ 
     @place = Place.new(place_params)
 
     respond_to do |format|

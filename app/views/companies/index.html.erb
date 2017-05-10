@@ -1,8 +1,9 @@
+<div class="container">
 <p id="notice"><%= notice %></p>
 
 <h1>Companies</h1>
 
-<table>
+<table class="table">
   <thead>
     <tr>
       <th>Name</th>
@@ -26,9 +27,9 @@
         <td><%= company.postcode %></td>
         <td><%= company.start_date %></td>
         <td><%= company.active %></td>
-        <td><%= link_to 'Show', company %></td>
-        <td><%= link_to 'Edit', edit_company_path(company) %></td>
-        <td><%= link_to 'Destroy', company, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', company,:class=>"btn btn-success" %></td>
+        <td><%= link_to 'Edit', edit_company_path(company),:class=>"btn btn-info" %></td>
+        <td><%= link_to 'Destroy', company, method: :delete, data: { confirm: 'Are you sure?' },:class=>"btn btn-warning"%></td>
       </tr>
     <% end %>
   </tbody>
@@ -36,4 +37,5 @@
 
 <br>
 
-<%= link_to 'New Company', new_company_path %>
+<%= link_to 'New Company', new_company_path ,:class=>"btn btn-success"%>
+</div>
