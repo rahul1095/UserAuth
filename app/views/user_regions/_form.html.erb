@@ -26,7 +26,7 @@
  <div class="form-group">
         <label class="col-sm-2 control-label"></label>
         <div class="col-md-3  inputGroupContainer">
-         <%= f.select(:region_id, Region.all.collect {|u| [u.region_name, u.id]},{},:prompt => 'Select Region',:class=>"form-control",:multiple => true) %>  
+         <%= f.select(:region_id, Region.find(Region.ids - UserRegion.all.map(&:region_id).uniq).collect {|u| [u.region_name, u.id]},{},:prompt => 'Select Region',:class=>"form-control") %>  
           </div>
           </div>
         </div>
@@ -49,7 +49,21 @@
         <div class="form-group">
         <label class="col-sm-1 control-label"></label>
         <div class="col-sm-2  inputGroupContainer">
-       <%= text_area(:text, "aaa", :size => "15x5") %>
+       <%#= f.text_area :text, value: "aaa", :size => "15x5" %>
+       <ul>
+
+        <% UserRegion.all.each do  |region| %>
+         <% if region.right == "true" %>
+      
+              <li><%= Region.find(region.region_id).region_name%></li>
+          
+        <% end %>
+   
+
+        <% end %>
+
+        
+       </ul>
   </div>
   </div>
 

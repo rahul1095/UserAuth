@@ -24,10 +24,17 @@ class UserRegionsController < ApplicationController
   # POST /user_regions
   # POST /user_regions.json
   def create
+ 
     @user_region = UserRegion.new(user_region_params)
-
+   
+   @user_region.right="true"
     respond_to do |format|
       if @user_region.save
+         
+        #UserRegion.create(:user_id=>params[:user_region][:user_id],:region_id=>params[:user_region][:region_id])
+
+        # @user_region=UserRegion.create(:user_id=>params[:user_region][:user_id],:region_id=>params[:user_region][:region_id].reject(&:empty?))
+
         format.html { redirect_to @user_region, notice: 'User region was successfully created.' }
         format.json { render :show, status: :created, location: @user_region }
       else
@@ -69,6 +76,6 @@ class UserRegionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_region_params
-      params.require(:user_region).permit(:region_name)
+      params.require(:user_region).permit(:region_name,:user_id,:region_id,:left,:right)
     end
 end
