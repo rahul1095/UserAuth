@@ -28,7 +28,7 @@ class UserRegionsController < ApplicationController
     @user_region = UserRegion.new(user_region_params)
    
    @user_region.right="true"
-   @user_region.right="false"
+   @user_region.left="false"
     respond_to do |format|
       if @user_region.save
          

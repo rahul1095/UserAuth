@@ -14,26 +14,18 @@
   <tbody>
     <% @user_regions.each do |user_region| %>
       <tr>
-<<<<<<< HEAD
-        <td><%= user_region.region_id %></td>
-         <td><%= user_region.user_id %></td>
-        <td><%= link_to 'Show', user_region %></td>
-        <td><%= link_to 'Edit', edit_user_region_path(user_region) %></td>
-        <td><%= link_to 'Destroy', user_region, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-=======
 
         <td><%if user_region.region_id.present? %>
        <%= Region.find(user_region.region_id).region_name %>
        <%end%></td>
 
        <td><%if user_region.user_id.present? %>
-      <%= User.find(user_region.user_id).first_name %>
+      <%=User.find(user_region.user_id).first_name %>
        <%end%></td>
-
+ 
         <td><%= link_to 'Show', user_region,:class=>"btn btn-success" %></td>
         <td><%= link_to 'Edit', edit_user_region_path(user_region),:class=>"btn btn-info"%></td>
         <td><%= link_to 'Destroy', user_region, method: :delete, data: { confirm: 'Are you sure?' },:class=>"btn btn-danger"%></td>
->>>>>>> f7653560a9985e6e69d9437530c955f5ee030ac6
       </tr>
     <% end %>
   </tbody>

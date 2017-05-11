@@ -25,7 +25,7 @@ class UserRolesController < ApplicationController
   # POST /user_roles.json
   def create
     @user_role = UserRole.new(user_role_params)
-
+    
     respond_to do |format|
       if @user_role.save
         format.html { redirect_to @user_role, notice: 'User role was successfully created.' }

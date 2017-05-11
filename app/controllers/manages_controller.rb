@@ -50,7 +50,7 @@ class ManagesController < ApplicationController
   def update
     respond_to do |format|
       if @manage.update(manage_params)
-        format.html { redirect_to @manage, notice: 'user was successfully updated.' }
+        format.html { redirect_to manages_path, notice: 'user was successfully updated.' }
         format.json { render :show, status: :ok, location: @manage }
       else
         format.html { render :edit }
