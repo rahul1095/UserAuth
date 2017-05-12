@@ -63,8 +63,6 @@
     <%= f.submit "add", :class=>"btn btn-success"%>
   </div>
   </div>
-  <%= button_tag "Reset", type: :reset %>
-
 <% end %>
        
      </div>
@@ -95,30 +93,11 @@
           </div>
         </div>
 
-             <div class="form-group">
-              <label class="col-sm-1 control-label"></label>
-              <div class="col-sm-1  inputGroupContainer">
-           <%#=link_to 'add',:id=>'xyz'%>
-            </div>
-           </div>
-
-
-             <div class="form-group">
-              <label class="col-sm-1 control-label"></label>
-              <div class="col-sm-1  inputGroupContainer">
-           <%#=link_to 'remove',:id=>'xyz1'%>
-            </div>
-           </div>
 
           <div class="form-group">
          <label class="col-sm-1 control-label"></label>
          <div class="col-sm-2  inputGroupContainer">
-       <%#= f.text_area :text, value: "aaa", :size => "15x5" %>
-       <ul>
-   
-      
- 
-   
+       <%= f.hidden_field :right_value, :value => "xyz" %> <%= f.hidden_field :right_value, :value => "xyz" %> <%= f.hidden_field :right_value, :value => "xyz" %>
   </div>
   </div>
 
@@ -128,13 +107,8 @@
     <%= f.submit "remove", :class=>"btn btn-success"%>
   </div>
   </div>
-  <%= button_tag "Reset", type: :reset %>
-
 <% end %>
-     </div>
-
-
-    
-  </div>
 </div>
+ </div>
+</div></br></br></br></br></br></br></br></br>
 

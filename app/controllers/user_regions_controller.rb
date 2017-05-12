@@ -24,18 +24,16 @@ class UserRegionsController < ApplicationController
   # POST /user_regions
   # POST /user_regions.json
   def create
- 
     @user_region = UserRegion.new(user_region_params)
-   
-   @user_region.right="true"
-   @user_region.left="false"
+   if params[:user_region][:right_value].present?
+    @user_region=UserRegion.find_by_region_id(params[:user_region][:region_id])
+     @user_region.destroy 
+     redirect_to :back 
+   else
+    @user_region = UserRegion.new(user_region_params) 
+     @user_region.right=true 
     respond_to do |format|
       if @user_region.save
-         
-        #UserRegion.create(:user_id=>params[:user_region][:user_id],:region_id=>params[:user_region][:region_id])
-
-        # @user_region=UserRegion.create(:user_id=>params[:user_region][:user_id],:region_id=>params[:user_region][:region_id].reject(&:empty?))
-
         format.html { redirect_to @user_region, notice: 'User region was successfully created.' }
         format.json { render :show, status: :created, location: @user_region }
       else
@@ -44,7 +42,7 @@ class UserRegionsController < ApplicationController
       end
     end
   end
-
+end
   # PATCH/PUT /user_regions/1
   # PATCH/PUT /user_regions/1.json
   def update
