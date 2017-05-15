@@ -1,3 +1,5 @@
+module ApplicationHelp
+end
 
 module ApplicationHelper
     def user_permission_admin?
