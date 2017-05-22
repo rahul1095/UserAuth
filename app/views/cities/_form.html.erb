@@ -19,16 +19,11 @@
         </div>
          </div>
 
-         <div class="form-group">
-        <label class="col-sm-1 control-label">city_Name</label>
-      <div class="col-sm-1  inputGroupContainer">
-        <%= f.text_field :city_name,:class=>"form-control" %>
-        </div>
-         </div>
+       
 
  <div class="field">
      <%= f.label :state_name %>
-    <%= f.select(:state_id, State.all.collect {|u| [u.state_name, u.id]},:prompt => 'Select Category',:class=>"form-control") %>
+    <%= f.select(:state_id, State.all.collect {|u| [u.state_name, u.id]},:prompt => 'Select state',:class=>"form-control") %>
  
 </div>
 
