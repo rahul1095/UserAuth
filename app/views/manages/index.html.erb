@@ -1,3 +1,5 @@
+
+
 <div class="container">
 <p id="notice"><%= notice %></p>
 
@@ -36,15 +38,16 @@
           <%end%>
         </td>
         
-        
         <td><%= user.start_date %></td>
         <td><%= user.end_date %></td>
+         
         <td><%= user.monthly_charge %></td>
 
         <td><%= user.notes.try(:html_safe)%></td>
         <td><%= user.active %></td>
 
         <td><%= link_to 'Show', manage_path(user), :class=>"btn btn-info" %></td>
+
         <% if user_permission_admin? %>
          <td><%= link_to 'Edit', edit_manage_path(user), :class=>"btn btn-warning"%><td/> 
         <td><%= link_to 'Destroy', manage_path(user),
@@ -61,13 +64,29 @@
             <td><%= link_to 'Edit', edit_manage_path(user), :class=>"btn btn-warning"%><td/> 
          <% end%>
 
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+
+         <% if user_permission_admin? %>
+        <td><%= link_to 'Edit', edit_manage_path(user), :class=>"btn btn-warning"%> </td>
+       
+             <% elsif user_check(user, current_user) %> 
+                <td><%= link_to 'Edit', edit_manage_path(user), :class=>"btn btn-warning"%> </td>
+                <td><%= link_to 'Destroy', manage_path(user),
+              method: :delete,
+              data: { confirm: 'Are you sure?' }, :class=>"btn btn-danger" %></td>
+          
+             <% elsif user_permission_user(user, current_user)%> 
+
+            
+               <td><%= link_to 'Edit', edit_manage_path(user), :class=>"btn btn-warning"%> 
+               <% elsif user_check(user, current_user) %> 
+               <td><%= link_to 'Edit', edit_manage_path(user), :class=>"btn btn-warning"%> 
+              <%end%>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
 
 <br>
-
 <%= link_to 'New User', new_manage_path, :class=>"btn btn-success"%>
 </div>
 <style> 

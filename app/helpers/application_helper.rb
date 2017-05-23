@@ -8,21 +8,18 @@ module ApplicationHelper
        end
     end
 
-    # def user_permission_manager?
-    #    if current_user
-    #      UserRole.find(current_user.role_id).role_name == "Manager" && User.all.map(&:company_id) == current_user.company_id
-    #    else
-    #        false
-    #    end
-    # end
 
-    def user_permission_user?
-       if current_user
-         UserRole.find(current_user.role_id).role_name == "User"
-       else
-       false
-       end
-    end
+   def user_permission_user(user1, curr_user)
+        if UserRole.find(curr_user.role_id).role_name == "User"
+            if  user1.id == curr_user.id
+              true
+            else
+              false
+            end
+        else
+          false
+        end
+        end
 
     def user_check(user1, curr_user)
         if UserRole.find(curr_user.role_id).role_name == "Manager"
