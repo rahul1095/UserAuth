@@ -1,5 +1,5 @@
 class CitiesController < ApplicationController
-  before_action :set_city, only: [:show, :edit, :update, :destroy]
+  before_action :set_city, only: [:show, :edit, :update, :destroy,:show_page,:edit_city]
 
   # GET /cities
   # GET /cities.json
@@ -12,6 +12,9 @@ class CitiesController < ApplicationController
   def show
   end
 
+def show_page
+render 'cities/show_page'
+end
   # GET /cities/new
   def new
     @city = City.new
@@ -19,13 +22,14 @@ class CitiesController < ApplicationController
 
   # GET /cities/1/edit
   def edit
+
+  end
+  def edit_city
+     render 'cities/edit_city'
   end
 
-  def get_cities
-
-    
+  def get_cities 
  @cities =City.where(:state_id =>params[:state])
-
     end
   # POST /cities
   # POST /cities.json
@@ -48,7 +52,8 @@ class CitiesController < ApplicationController
   def update
     respond_to do |format|
       if @city.update(city_params)
-        format.html { redirect_to @city, notice: 'City was successfully updated.' }
+         @cities = City.all
+        format.js { render :file=> 'cities/update_cities.js.erb', notice: 'City was successfully updated.' }
         format.json { render :show, status: :ok, location: @city }
       else
         format.html { render :edit }

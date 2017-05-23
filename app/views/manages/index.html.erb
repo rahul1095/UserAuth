@@ -42,25 +42,20 @@
         <td><%= user.end_date %></td>
          
         <td><%= user.monthly_charge %></td>
-        <td><%= user.notes%></td>
+        <td><%=raw user.notes%></td>
         <td><%= user.active %></td>
 
         <td><%= link_to 'Show', manage_path(user), :class=>"btn btn-info" %></td>
+
          <% if user_permission_admin? %>
-        <td><%= link_to 'Edit', edit_manage_path(user), :class=>"btn btn-warning"%> </td>
-       
+         
+            <td><%= link_to 'Edit', edit_manage_path(user), :class=>"btn btn-warning"%> </td>
              <% elsif user_check(user, current_user) %> 
-                <td><%= link_to 'Edit', edit_manage_path(user), :class=>"btn btn-warning"%> </td>
-                <td><%= link_to 'Destroy', manage_path(user),
-              method: :delete,
-              data: { confirm: 'Are you sure?' }, :class=>"btn btn-danger" %></td>
-          
+                <td><%= link_to 'Edit', edit_manage_path(user), :class=>"btn btn-warning"%> </td>  
              <% elsif user_permission_user(user, current_user) %> 
 
-            
                <td><%= link_to 'Edit', edit_manage_path(user), :class=>"btn btn-warning"%> 
-               <% elsif user_check(user, current_user) %> 
-               <td><%= link_to 'Edit', edit_manage_path(user), :class=>"btn btn-warning"%> 
+              
               <%end%>
       </tr>
     <% end %>

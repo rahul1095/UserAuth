@@ -8,14 +8,34 @@ Rails.application.routes.draw do
   resources :cities do
     collection do
       get :get_cities
+      end
+      member do
+       get :show_page
+      end
+       member do
+      get :edit_city
     end
-   end 
+  end 
   resources :states do
     collection do
       get :get_states
     end
+    member do 
+      get :edit_country
+    end 
+    member do
+    get :show_page
+    end
    end 
-  resources :countries
+
+  resources :countries do
+    member do 
+      get :edit_country
+    end 
+    member do
+      get :show_page
+    end
+  end
   resources :user_regions
   resources :user_roles
   resources :companies
