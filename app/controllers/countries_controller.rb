@@ -1,5 +1,5 @@
 class CountriesController < ApplicationController
-  before_action :set_country, only: [:show, :edit, :update, :destroy]
+  before_action :set_country, only: [:show, :edit, :update, :destroy,:show_page,:edit_country]
 
   # GET /countries
   # GET /countries.json
@@ -11,7 +11,10 @@ class CountriesController < ApplicationController
   # GET /countries/1.json
   def show
   end
-
+  
+  def show_page
+    render 'countries/show_page'
+  end
   # GET /countries/new
   def new
     @country = Country.new
@@ -19,6 +22,10 @@ class CountriesController < ApplicationController
 
   # GET /countries/1/edit
   def edit
+  end
+
+  def edit_country
+    render 'countries/edit_countries'
   end
 
   # POST /countries

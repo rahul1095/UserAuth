@@ -1,4 +1,4 @@
-<div class="containner">
+<div class=container>
 <p id="notice"><%= notice %></p>
 
 <h1>States</h1>
@@ -15,10 +15,14 @@
   <tbody>
     <% @states.each do |state| %>
       <tr>
-      <td><%= Country.find(state.country_id).country_name %></td>
+      <td><%if state.country_id.present? %>
+      <%= Country.find(state.country_id).country_name %>
+        <%end%>
+      </td>
         <td><%= state.state_name %></td>
-        <td><%= link_to 'Show', state,:class=>"btn btn-success" %></td>
-        <td><%= link_to 'Edit', edit_state_path(state),:class=>"btn btn-info" %></td>
+        
+       <td><%= link_to 'Show', show_page_state_path(state), :class=>"btn btn-success", :remote => true, 'data-toggle' =>"modal",'data-target' =>'#myModal' %></td>
+        
         <td><%= link_to 'Destroy', state, method: :delete, data: { confirm: 'Are you sure?' },:class=>"btn btn-danger" %></td>
       </tr>
     <% end %>
@@ -27,4 +31,21 @@
 
 <br>
 
-<%= link_to 'New State', new_state_path %>
+<%= link_to 'New State', new_state_path,:class=>"btn btn-default"%>
+</div>
+<div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+     <div class="modal-content">
+      <div class="modal-header">
+       <button type="button" class="close" data-dismiss="modal">&times;</button>
+       <h4 class="modal-title">state Info</h4>
+      </div>
+      <div class="modal-body">
+      </div>
+      <div class="modal-footer">
+       <button class="btn btn-default" data-dismiss="modal" aria-hidden="true">Close</button>
+      </div>
+     </div>
+    </div>
+</div>
+</div>
