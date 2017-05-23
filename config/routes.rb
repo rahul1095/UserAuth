@@ -1,9 +1,31 @@
 Rails.application.routes.draw do
-  resources :regions
-  resources :nodes
+  resources :regions do
+    member do 
+      get :edit_region
+    end 
+    member do
+      get :show_page
+    end
+  end
+
+  resources :nodes do
+    member do 
+      get :edit_node
+    end 
+    member do
+      get :show_page
+    end
+   end
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
-  resources :places
+  resources :places do
+    member do 
+      get :edit_place
+    end 
+    member do
+      get :show_page
+    end
+  end
   resources :images
   resources :cities do
     collection do
@@ -21,7 +43,7 @@ Rails.application.routes.draw do
       get :get_states
     end
     member do 
-      get :edit_country
+      get :edit_state
     end 
     member do
     get :show_page
@@ -36,10 +58,40 @@ Rails.application.routes.draw do
       get :show_page
     end
   end
-  resources :user_regions
-  resources :user_roles
-  resources :companies
-  resources :manages
+
+  resources :user_regions do
+    member do 
+      get :edit_user_region
+    end 
+    member do
+      get :show_page
+    end
+  end
+
+  resources :user_roles do
+   member do 
+      get :edit_user_roles
+    end 
+    member do
+      get :show_page
+    end
+  end
+
+  resources :companies do
+    member do 
+      get :edit_companies
+    end 
+    member do
+      get :show_page
+    end
+  end
+  
+  resources :manages do
+    member do
+      get :show_page
+    end
+  end
+
   devise_for :users
   root 'companies#index'
   # get 'get_states' => "states#get_states"

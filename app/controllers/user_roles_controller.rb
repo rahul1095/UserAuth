@@ -12,6 +12,9 @@ class UserRolesController < ApplicationController
   def show
   end
 
+  def show_page
+  end
+
   # GET /user_roles/new
   def new
     @user_role = UserRole.new
@@ -20,7 +23,9 @@ class UserRolesController < ApplicationController
   # GET /user_roles/1/edit
   def edit
   end
-
+  
+   def edit_user_roles
+   end
   # POST /user_roles
   # POST /user_roles.json
   def create

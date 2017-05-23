@@ -25,7 +25,7 @@ class CountriesController < ApplicationController
   end
 
   def edit_country
-    render 'countries/edit_countries'
+    render 'countries/edit_country'
   end
 
   # POST /countries
@@ -49,7 +49,8 @@ class CountriesController < ApplicationController
   def update
     respond_to do |format|
       if @country.update(country_params)
-        format.html { redirect_to @country, notice: 'Country was successfully updated.' }
+        @countries=Country.all
+       format.js { render :file=> 'countries/update_countries.js.erb', notice: 'Countries was successfully updated.' }
         format.json { render :show, status: :ok, location: @country }
       else
         format.html { render :edit }
