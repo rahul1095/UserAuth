@@ -16,10 +16,12 @@
     <% @nodes.each do |node| %>
       <tr>
         <td><%= node.node_name %></td>
-        <td><%= node.place_id %></td>
-        <td><%= link_to 'Show', node %></td>
-        <td><%= link_to 'Edit', edit_node_path(node) %></td>
-        <td><%= link_to 'Destroy', node, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= Place.find(node.place_id).place_name%></td>
+        
+        <td><%= link_to 'Show', show_page_node_path(node), :class=>"btn btn-success", :remote => true, 'data-toggle' =>"modal",'data-target' =>'#myModal' %></td>
+       <td><%= link_to 'Edit',edit_node_node_path(node), :class=>"btn btn-info", :remote => true, 'data-toggle' =>"modal",'data-target' =>'#myModal1' %></td>
+        <td><%= link_to 'Destroy', node, method: :delete, data: { confirm: 'Are you sure?' },:class=>"btn btn-danger" %></td>
+
       </tr>
     <% end %>
   </tbody>

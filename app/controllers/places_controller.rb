@@ -1,5 +1,5 @@
 class PlacesController < ApplicationController
-  before_action :set_place, only: [:show, :edit, :update, :destroy,:show_pag,:edit_place]
+  before_action :set_place, only: [:show, :edit, :update, :destroy,:show_page,:edit_place]
 
   # GET /places
   # GET /places.json
@@ -25,6 +25,7 @@ class PlacesController < ApplicationController
   end
    
    def edit_palce
+    render 'places/edit_place'
    end
   # POST /places
   # POST /places.json
@@ -50,7 +51,8 @@ class PlacesController < ApplicationController
   def update
     respond_to do |format|
       if @place.update(place_params)
-        format.html { redirect_to @place, notice: 'Place was successfully updated.' }
+         @places = Place.all
+        format.js { render :file=> 'places/update_place.js.erb', notice: 'place was successfully updated.' }
         format.json { render :show, status: :ok, location: @place }
       else
         format.html { render :edit }

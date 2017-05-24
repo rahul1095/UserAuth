@@ -1,0 +1,66 @@
+
+<p id="notice"><%= notice %></p>
+
+<div class="container">
+ <div class="modal fade" id="myModal" role="dialog">
+  <div class="modal-dialog">
+   <div class="modal-content">
+    <div class="modal-header">
+     <button type="button" class="close" data-dismiss="modal">&times;</button>
+      <h4 class="modal-title">User Info</h4>
+     </div>
+
+<div class="modal-body">
+ <p>
+  <strong>First Name:</strong>
+  <%= @manage.first_name %>
+ </p>
+  <p>
+    <strong>Last Name:</strong>
+    <%= @manage.last_name %>
+  </p>
+
+  <p>
+   <strong>Company:</strong>
+   <%= Company.find(@manage.company_id).name  %>
+  </p>
+
+  <p>
+    <strong>Role:</strong>
+    <%= UserRole.find(@manage.role_id).role_name  %>
+  </p>
+
+  <p>
+    <strong>Start date:</strong>
+    <%= @manage.start_date %>
+  </p>
+
+  <p>
+    <strong>End date:</strong>
+    <%= @manage.end_date %>
+  </p>
+
+  <p>
+    <strong>Monthly:</strong>
+    <%= @manage.monthly_charge %>
+  </p>
+  <p>
+    <strong>Notes:</strong> 
+    <%= raw @manage.notes %>
+  </p>
+  <p>
+    <strong>images:</strong>
+    
+  </p>
+  <p>
+    <strong>active:</strong>
+    <%= @manage.active %>
+  </p>
+ </div>
+<div class="modal-footer">
+  <%= link_to 'Back', manages_path ,:class=>"btn btn-default"%>
+ </div>
+   </div>
+  </div>
+ </div>
+</div>

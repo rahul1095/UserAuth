@@ -7,7 +7,7 @@
 
 <p>
   <strong>Place:</strong>
-  <%= @node.place_id %>
+  <%=Place.find(node.place_id).place_name %>
 </p>
 
 <%= link_to 'Edit', edit_node_path(@node) %> |

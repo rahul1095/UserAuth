@@ -7,5 +7,5 @@
 
 <p>
   <strong>Company:</strong>
-  <%= @place.company_id %>
+  <%= Company.find(@place.company_id).name %>
 </p>

@@ -1,0 +1,11 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Node name:</strong>
+  <%= @node.node_name %>
+</p>
+
+<p>
+  <strong>Place:</strong>
+ <%=Place.find(@node.place_id).place_name %>
+</p>
