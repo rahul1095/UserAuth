@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Blog6</title>
+  <head>1
+    <title>UserAuth</title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -9,36 +9,22 @@
   </head>
 
   <body>
-  <nav class="navbar navbar-inverse">
+  <nav class="navbar navbar-default navbar-static-top" style="background-color: #d5cdc3;">
       <div class="container">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-           
             <span class="sr-only">Toggle navigation</span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">Project name</a>
+          <a class="navbar-brand" href="#">User Details</a>
         </div>
-
         <div id="navbar" class="navbar-collapse collapse" aria-expanded="false" style="height: 1px;">
           <ul class="nav navbar-nav">
-             <li><a href= "/cities/new" >New city</a></li>
-                <li><a href="/states/new">New state</a></li>
-                 <li><a href="/user_regions/new">use_to_region</a></li>
-                 <li><a href=" /companies/new">Add campanies</a></li>
-                  <li><a href="/places/new">Add place</a></li>
-                  <li><a href="/images/new">New image</a></li>
-                   <li><a href="/user_roles/new">New user_role</a></li>
-                   <li><a href="/manages/new">login</a></li>
-              <% unless user_signed_in? %>
-
-            <% else %>
-               <li><%= link_to "Sign out", destroy_user_session_path, :method => :delete %></li>
-                <%end%>
-
-            
+            <li class="active"><a href="/manages">Users</a></li>
+            <li><a href="/admin">Admin</a></li>
+            <li class=""><a href="/companies">Company <span class="sr-only">(current)</span></a></li>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Location <span class="caret"></span></a>
               <ul class="dropdown-menu">
@@ -47,40 +33,57 @@
                 <li><a href="/countries/new">New Country</a></li>
                 <li role="separator" class="divider"></li>
                 <li class="dropdown-header">Nav header</li>
-                <li><a href="#">Separated link</a></li>
-                <li><a href="#">One more separated link</a></li>
+                <li><a href="/regions/new">New Region</a></li>
+                <li><a href="/nodes/new">New Node</a></li>
               </ul>
             </li>
-
-              <!-- 
-             <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
-              <ul class="dropdown-menu">
-                
-                <li><a href="#">Another action</a></li>
-                <li><a href="#">Something else here</a></li>
-                <li role="separator" class="divider"></li>
-                <li class="dropdown-header">Nav header</li>
-                <li><a href="#">Separated link</a></li>
-                <li><a href="#">One more separated link</a></li>
-              </ul> -->
-
-           
-        
-        
- </ul>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <% if user_signed_in? %>
+            <li><%= link_to "Sign out", destroy_user_session_path, :method => :delete %></li>
+            <% else %>
+            <li><%= link_to 'Login', login_page_images_path, :remote => true, 'data-toggle' => "modal", 'data-target' => '#loginModal' %></li>
+            <li><a href="/manages/new">Register</a></li>
+            <% end%>
+            <li><a href="/places/new">Add Place</a></li>
+            <li><a href="/user_regions/new">UserToRegion</a></li>
+             <li><a href="/user_roles/new">User Role</a></li>
+          </ul>
         </div><!--/.nav-collapse -->
       </div>
-     </nav>
-
+    </nav>
+<br>
     <%= yield %>
+    <br><br><br>
+ 
+        <footer class="footer">
+      <div class="container">
+        <p class="text-muted">Place sticky footer content here.</p>
+      </div>
+    </footer>
   </body>
 </html>
+<div class="modal fade" id="loginModal" role="dialog">
+    <div class="modal-dialog">
+     <div class="modal-content">
+      <div class="modal-header">
+       <button type="button" class="close" data-dismiss="modal">&times;</button>
+       <h4 class="modal-title"> Login </h4>
+      </div>
+      <div class="modal-body">
+
+      </div>
+      <div class="modal-footer">
+       
+      </div>
+     </div>
+    </div>
+</div>
 
 <style type="text/css">
 body{
   background-color: lightcyan;
- background-image: url(<%= asset_path('19.jpg')%>);
+  background-image: url(<%= asset_path('19.jpg')%>);
   background-position: center center;
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -95,4 +98,5 @@ body{
   .dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus{
     background-color: #ffba98;
   }
+ 
 </style>

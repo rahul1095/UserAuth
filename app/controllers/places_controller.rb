@@ -3,6 +3,8 @@ class PlacesController < ApplicationController
 
   # GET /places
   # GET /places.json
+   
+
   def index
     @places = Place.all
   end
@@ -15,6 +17,7 @@ class PlacesController < ApplicationController
   def show_page
   render 'places/show_page'
   end
+  
   # GET /places/new
   def new
     @place = Place.new

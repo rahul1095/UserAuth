@@ -11,7 +11,11 @@ class ImagesController < ApplicationController
   # GET /images/1.json
   def show
   end
-
+    
+     def login_page
+     render 'devise/login_page'
+      end
+      
   # GET /images/new
   def new
     @image = Image.new

@@ -1,5 +1,5 @@
 class ManagesController < ApplicationController
-	before_action :set_manage, only: [:show, :edit, :update, :destroy]
+	before_action :set_manage, only: [:show, :edit, :update, :destroy,:show_page]
 
   # GET /cities
   # GET /cities.json
@@ -12,18 +12,21 @@ class ManagesController < ApplicationController
   def show
   end
 
-  # GET /cities/new
+  def show_page
+    render 'manages/show_page'
+  end
   def new
     @manage = User.new
-  #   if params[:start_date].present?
-  #       @manage = User.where('created_at > ? AND created_at < ?', params[:start_date].to_date,params[:end_date].to_date)
 
-  # end 
   end
 
   # GET /cities/1/edit
   def edit
   end
+
+  def edit_manage
+  render 'manages/edit_manage'
+  end 
 
   # POST /cities
   # POST /cities.json

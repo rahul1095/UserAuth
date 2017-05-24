@@ -27,7 +27,11 @@ Rails.application.routes.draw do
       get :show_page
     end
   end
-  resources :images
+  resources :images do
+    collection do 
+      get :login_page
+    end 
+    end
   resources :cities do
     collection do
       get :get_cities
@@ -91,6 +95,11 @@ Rails.application.routes.draw do
     member do
       get :show_page
     end
+    member do
+      get :edit_manage
+    end
+    
+
   end
 
   devise_for :users
