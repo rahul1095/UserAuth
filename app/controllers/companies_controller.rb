@@ -1,6 +1,6 @@
 class CompaniesController < ApplicationController
 before_action :authenticate_user!
-  before_action :set_company, only: [:show, :edit, :update, :destroy]
+  before_action :set_company, only: [:show, :edit, :update, :destroy,:show_page,:edit_company]
 
   # GET /companies
   # GET /companies.json
@@ -12,6 +12,10 @@ before_action :authenticate_user!
   # GET /companies/1.json
   def show
   end
+ 
+ def show_page
+  render 'companies/show_page'
+  end
 
   # GET /companies/new
   def new
@@ -20,6 +24,10 @@ before_action :authenticate_user!
 
   # GET /companies/1/edit
   def edit
+  end
+
+  def edit_company
+  render 'companies/edit_company'
   end
 
   # POST /companies
@@ -43,7 +51,8 @@ before_action :authenticate_user!
   def update
     respond_to do |format|
       if @company.update(company_params)
-        format.html { redirect_to @company, notice: 'Company was successfully updated.' }
+         @companies = Company.all
+        format.js { render :file=> 'companies/update_company.js.erb', notice: 'Company was successfully updated.' }
         format.json { render :show, status: :ok, location: @company }
       else
         format.html { render :edit }

@@ -1,4 +1,4 @@
-<%= form_for(state) do |f| %>
+<%= form_for(state,:remote=>true) do |f| %>
   <% if state.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(state.errors.count, "error") %> prohibited this state from being saved:</h2>
@@ -12,8 +12,8 @@
   <% end %>
 
    <div class="form-group">
-        <label class="col-sm-1 control-label">State_name</label>
-        <div class="col-md-4  inputGroupContainer">
+        <label class="col-sm-2 control-label">State_name</label>
+        <div class="col-md-3 inputGroupContainer">
          <%= f.text_field :state_name,:class=>"form-control" %>
           </div>
           </div>

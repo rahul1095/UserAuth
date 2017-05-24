@@ -18,6 +18,7 @@ Rails.application.routes.draw do
    end
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
+  
   resources :places do
     member do 
       get :edit_place
@@ -70,7 +71,7 @@ Rails.application.routes.draw do
 
   resources :user_roles do
    member do 
-      get :edit_user_roles
+      get :edit_user_role
     end 
     member do
       get :show_page
@@ -79,7 +80,7 @@ Rails.application.routes.draw do
 
   resources :companies do
     member do 
-      get :edit_companies
+      get :edit_company
     end 
     member do
       get :show_page

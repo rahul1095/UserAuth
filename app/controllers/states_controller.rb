@@ -1,5 +1,5 @@
 class StatesController < ApplicationController
-  before_action :set_state, only: [:show, :edit, :update, :destroy,:show_page]
+  before_action :set_state, only: [:show, :edit, :update, :destroy,:show_page,:edit_state]
 
   # GET /states
   # GET /states.json
@@ -23,7 +23,10 @@ class StatesController < ApplicationController
   # GET /states/1/edit
   def edit
   end
-
+ 
+ def edit_state
+  render 'states/edit_state'
+ end
   # POST /states
   # POST /states.json
   def get_states
@@ -50,7 +53,8 @@ class StatesController < ApplicationController
   def update
     respond_to do |format|
       if @state.update(state_params)
-        format.html { redirect_to @state, notice: 'State was successfully updated.' }
+        @states = State.all
+       format.js { render :file=> 'states/update_state.js.erb', notice: 'state was successfully updated.' }
         format.json { render :show, status: :ok, location: @state }
       else
         format.html { render :edit }
