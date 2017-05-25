@@ -1,5 +1,4 @@
 class CompaniesController < ApplicationController
-before_action :authenticate_user!
   before_action :set_company, only: [:show, :edit, :update, :destroy,:show_page,:edit_company]
 
   # GET /companies
