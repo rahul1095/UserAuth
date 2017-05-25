@@ -1,5 +1,4 @@
 
-
 <div class="container">
 <p id="notice"><%= notice %></p>
 <h1>User Details</h1>
@@ -45,19 +44,22 @@
 
         <td><%= user.active %></td>
        <td><%= link_to 'Show', show_page_manage_path(user), :class=>"btn btn-success", :remote => true, 'data-toggle' =>"modal",'data-target' =>'#myModal' %></td>
-
+             
          <% if user_permission_admin? %>
          
             <td><%= link_to 'Edit', edit_manage_path(user), :class=>"btn btn-warning"%> </td>
+            <td><%= link_to 'Destroy', manage_path(user),
+              method: :delete,
+              data: { confirm: 'Are you sure?' }, :class=>"btn btn-danger" %></td>
              <% elsif user_check(user, current_user) %> 
 
                 <td><%= link_to 'Edit', edit_manage_path(user), :class=>"btn btn-warning"%> </td>
                 <td><%= link_to 'Destroy', manage_path(user),
               method: :delete,
-              data: { confirm: 'Are you sure?' }, :class=>"btn btn-danger" %></td
+              data: { confirm: 'Are you sure?' }, :class=>"btn btn-danger" %></td>
              <% elsif user_permission_user(user, current_user)%> 
-          <td><%= link_to 'Edit', edit_manage_path(user), :class=>"btn btn-warning"%> </td>   <td><%= link_to 'Edit', edit_manage_path(user), :class=>"btn btn-warning"%> 
-              
+             <td><%= link_to 'Edit', edit_manage_path(user), :class=>"btn btn-warning"%> </td>  
+      
               <%end%>
               </tr>
             <% end %>

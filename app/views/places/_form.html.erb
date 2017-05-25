@@ -25,7 +25,7 @@
 
   <div class="field">
     <%= f.label :company_id %>
-    <%= f.select(:company_id, Company.all.collect {|u| [u.name, u.id]},:prompt => 'Select Category',:class=>"form-control") %>
+    <%= f.select(:company_id, Company.all.collect {|u| [u.name, u.id]},:prompt => 'Select Company_name',:class=>"form-control") %>
    
   </div>
 
