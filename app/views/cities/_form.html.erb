@@ -12,26 +12,30 @@
     </div>
   <% end %>
 
-
- <div class="form-group">
+    <div class="row">
+      <div class="form-group">
         <label class="col-sm-1 control-label">city_Name</label>
       <div class="col-sm-2  inputGroupContainer">
         <%= f.text_field :city_name,:class=>"form-control" %>
         </div>
          </div>
-
- <div class="field">
-     <%= f.label :state_name %>
-    <%= f.select(:state_id, State.all.collect {|u| [u.state_name, u.id]},:prompt => 'Select state',:class=>"form-control") %>
- 
-</div>
-
- <div class="form-group">
+         </div>
+          </br>
+          <div class="row">
+         <div class="form-group">
+        <label class="col-sm-1 control-label">state_Name</label>
+      <div class="col-sm-2  inputGroupContainer">
+        <%= f.select(:state_id, State.all.collect {|u| [u.state_name, u.id]},:prompt => 'Select state',:class=>"form-control") %>
+         </div>
+        </div>
+        </div>
+     
+       <div class="form-group">
         <label class="col-sm-1 control-label"></label>
       <div class="col-sm-1  inputGroupContainer">
          <%= f.submit :class=>"btn btn-success btn-md"%>
         </div>
+     </div>
     </div>
-  </div>
-   <%end%>
-  
+    <%end%>
+ 

@@ -1,5 +1,13 @@
+<div class=container>
 <h1>New Place</h1>
-
 <%= render 'form', place: @place %>
 
-<%= link_to 'Back', places_path %>
+<div class="form-group">
+        <label class="col-sm-1 control-label"></label>
+      <div class="col-sm-1  inputGroupContainer">
+         <%= link_to 'Back', places_path ,:class=>"btn btn-default"%>
+        </div>
+    </div>
+
+    </div>
+

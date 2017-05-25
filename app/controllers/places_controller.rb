@@ -51,11 +51,14 @@ class PlacesController < ApplicationController
 
   # PATCH/PUT /places/1
   # PATCH/PUT /places/1.json
-  def update
-    respond_to do |format|
+     def update
+       respond_to do |format|
+
       if @place.update(place_params)
+    
          @places = Place.all
-        format.js { render :file=> 'places/update_place.js.erb', notice: 'place was successfully updated.' }
+
+         format.js { render :file=> 'places/update_place.js.erb', notice: 'place was successfully updated.' }
         format.json { render :show, status: :ok, location: @place }
       else
         format.html { render :edit }

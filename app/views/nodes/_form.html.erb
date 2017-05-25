@@ -1,3 +1,4 @@
+<div class=container>
 <%= form_for(node,:remote=>true) do |f| %>
   <% if node.errors.any? %>
     <div id="error_explanation">
@@ -15,13 +16,17 @@
     <%= f.label :node_name %>
     <%= f.text_field :node_name %>
   </div>
+  </br>
 
   <div class="field">
     <%= f.label :place_id %>
-    <%= f.number_field :place_id %>
+ <%= f.select(:place_id, Place.all.collect {|u| [u.place_name, u.id]},:prompt => 'Select place_name',:class=>"form-control") %>
   </div>
 
+   </br>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit :class=>"btn btn-success"%>
   </div>
 <% end %>
+</div>
+</br>
